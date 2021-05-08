@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const multer = require("multer");
 const booksRouter = require("./src/Router/BooksRouter");
 
@@ -29,6 +30,9 @@ const filterFile = (req, file, cb) => {
 app.use(
   multer({ storage: fileStorage, fileFilter: filterFile }).single("image")
 );
+
+// STATIC FILE
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 // body parser
 app.use(express.json());
