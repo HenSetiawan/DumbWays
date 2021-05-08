@@ -24,3 +24,29 @@ exports.postNewCategories = async (req, res) => {
     res.status(300).json(error.errors);
   }
 };
+
+exports.deleteCategory = async (req, res) => {
+  const id = req.params.id;
+  const datacategories = categoriesModel.findByPk(id);
+  console.log(datacategories.dataValues);
+  if (datacategories.dataValues !== undefined) {
+    try {
+      const category = await categoriesModel.destroy({
+        where: {
+          id: id,
+        },
+      });
+      res.status(200).json({
+        msg: "success",
+        data: category,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(300).json(error.errors);
+    }
+  } else {
+    res.status(404).json({
+      msg: "not found",
+    });
+  }
+};

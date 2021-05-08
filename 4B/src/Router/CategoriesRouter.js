@@ -4,4 +4,5 @@ const CategoriesController = require("../Controller/CategoriesController");
 
 CategoriesRouter.get("/v1/categories", CategoriesController.getAllCategories);
 CategoriesRouter.post("/v1/categories", CategoriesController.postNewCategories);
+CategoriesRouter.delete("/v1/categories/:id", CategoriesController.deleteCategory);
 module.exports = CategoriesRouter;

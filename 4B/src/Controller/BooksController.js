@@ -52,7 +52,7 @@ exports.updateBook = async (req, res) => {
     const bookData = await booksModel.findByPk(id);
     console.log("book data :", bookData);
 
-    if (bookData.dataValues != null) {
+    if (bookData.dataValues !== undefined) {
       deleteImage(bookData.dataValues.image);
       await booksModel.update(
         { name, stok, image, deskripsi, category_id },
@@ -87,7 +87,7 @@ exports.DeleteBook = async (req, res) => {
     const bookData = await booksModel.findByPk(id);
 
     //delete the data
-    if (bookData != null) {
+    if (bookData.dataValues !== undefined) {
       deleteImage(bookData.dataValues.image);
       await booksModel.destroy({
         where: {
