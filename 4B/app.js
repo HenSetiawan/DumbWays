@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const multer = require("multer");
 const booksRouter = require("./src/Router/BooksRouter");
-const categoriesRouter = require("./src/Router/CategoryRouter");
+const categoriesRouter = require("./src/Router/CategoriesRouter");
 
 // SETTING MULTER
 const fileStorage = multer.diskStorage({

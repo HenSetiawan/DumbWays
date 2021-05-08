@@ -3,4 +3,5 @@ const CategoriesRouter = express.Router();
 const CategoriesController = require("../Controller/CategoriesController");
 
 CategoriesRouter.get("/v1/categories", CategoriesController.getAllCategories);
+CategoriesRouter.post("/v1/categories", CategoriesController.postNewCategories);
 module.exports = CategoriesRouter;
