@@ -2,6 +2,7 @@
 
 ### Frontend Belum Selesai (:
 <p>Jalankan perintah dibawah pada terminal, setelah itu buat database pada MySql dengan nama dumbways, lalu import file dumbways.sql</p>
+
 ```
 npm install 
 
