@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const multer = require("multer");
 const booksRouter = require("./src/Router/BooksRouter");
+const categoriesRouter = require("./src/Router/CategoryRouter");
 
 // SETTING MULTER
 const fileStorage = multer.diskStorage({
@@ -39,6 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/", booksRouter);
+app.use("/api/", categoriesRouter);
 
 app.listen(3000, () => {
   console.log(`server running on port 3000`);
