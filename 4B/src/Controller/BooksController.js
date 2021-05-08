@@ -79,6 +79,36 @@ exports.updateBook = async (req, res) => {
   }
 };
 
+exports.DeleteBook = async (req, res) => {
+  const id = req.params.id;
+
+  //find the data
+  try {
+    const bookData = await booksModel.findByPk(id);
+
+    //delete the data
+    if (bookData != null) {
+      deleteImage(bookData.dataValues.image);
+      await booksModel.destroy({
+        where: {
+          id: id,
+        },
+      });
+      res.status(200).json({
+        msg: "success",
+        data: bookData,
+      });
+    } else {
+      res.status(404).json({
+        msg: "failed,data not found",
+        data: bookData,
+      });
+    }
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 const deleteImage = (pathImage) => {
   const imagePath = `${path.join(__dirname, "../", "../", "/")}${pathImage}`;
   console.log(imagePath);
