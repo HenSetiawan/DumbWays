@@ -50,3 +50,27 @@ exports.deleteCategory = async (req, res) => {
     });
   }
 };
+
+exports.updateCategory = async (req, res) => {
+  const id = req.params.id;
+  const name = req.body.name;
+  console.log(id,name)
+  try {
+  const category=await categoriesModel.update(
+      { name: name },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+    res.status(200).json({
+      msg: "success",
+      data: category,
+    });
+  } catch (error) {
+    res.status(404).json({
+      msg: "failed",
+    });
+  }
+};
